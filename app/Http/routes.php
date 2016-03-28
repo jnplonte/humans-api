@@ -11,10 +11,25 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['humansApi']], function () {
 
     Route::get('/', function () {
-        return view('welcome');
+        return abort(404);
     });
 
+    Route::get('humans', [
+        'as' => 'human', 'uses' => 'HumansController@getAll'
+    ]);
+
+    Route::post('human', [
+        'as' => 'human', 'uses' => 'HumansController@insert'
+    ]);
+
+    Route::get('human/{id}', [
+        'as' => 'human', 'uses' => 'HumansController@get'
+    ])->where('id', '[0-9]+');
+
+    Route::match(['put', 'delete'], 'human/{id}', [
+        'as' => 'human', 'uses' => 'HumansController@update'
+    ])->where('id', '[0-9]+');
 });

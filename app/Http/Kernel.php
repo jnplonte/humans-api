@@ -34,6 +34,11 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
         ],
+
+        'humansApi' => [
+          \App\Http\Middleware\EncryptCookies::class,
+          \App\Http\Middleware\ApiHeaders::class
+        ],
     ];
 
     /**
