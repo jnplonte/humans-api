@@ -21,8 +21,13 @@
   - Although there are a lot of available frameworks that can help you build your API rapidly, for this exam, we want you to build your API from scratch. We want to see your fundamentals.
   - There is no time limit. You can polish the application as you see fit before submitting.
   - Completed exam should be pushed through github on a public repo
-  
+
 ## Key Factors to Consider:
   - Clearly written code is a big plus
   - Use best practices and standards to write code
   - We'll be looking at how you commit code.
+
+
+## API Usage:
+  - run `php artisan migrate`
+  - for security access token is base_64 encoded url segment sample (/human => aHVtYW4) and  (/humans => aHVtYW5z)
