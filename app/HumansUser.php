@@ -19,8 +19,7 @@ class HumansUser extends Model
 
     protected $search = '';
 
-    public function __construct()
-    {
+    public function __construct(){
 
     }
 
@@ -51,6 +50,7 @@ class HumansUser extends Model
 
     public function updateUser($id = null, $arr = array()){
       if(!empty($id) && !empty($arr)){
+        $arr['updated_at'] =  date('Y-m-d G:i:s');
         $users = DB::table($this->table)
             ->where('id', $id)
             ->update($arr);
@@ -81,6 +81,8 @@ class HumansUser extends Model
 
     public function insertUser($arr = array()){
       if(!empty($arr)){
+        $arr['updated_at'] =  date('Y-m-d G:i:s');
+        $arr['created_at'] =  date('Y-m-d G:i:s');
         $users = DB::table($this->table)
         ->insert($arr);
         if(!empty($users)){
